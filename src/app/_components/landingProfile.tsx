@@ -7,7 +7,7 @@ export default function LandingPage() {
   const router = useRouter();
 
   const handleNext = () => {
-    router.push("/profile/age");
+    router.push("/setProfile/name");
   };
 
   return (
