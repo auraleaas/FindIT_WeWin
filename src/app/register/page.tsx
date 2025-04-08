@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Register from "../_components/register";
 import Image from "next/image";
 
 
