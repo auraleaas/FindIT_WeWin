@@ -16,10 +16,10 @@ export default function ModulePage() {
     <div className="min-h-screen bg-white pb-20">
       <div className="bg-[#4CD6C1] px-4 pt-8 pb-4 flex items-center gap-2">
       <BackButton />
-        <h1 className="text-lg font-medium text-white ml-2">Belajar Menulis</h1>
+        <h1 className="text-lg font-medium text-white ml-2">Learn to Write</h1>
       </div>
       <div className="px-4 mt-6">
-        <h2 className="text-2xl font-medium text-gray-900 mb-2">Huruf Latin</h2>
+        <h2 className="text-2xl font-medium text-gray-900 mb-2">Latin Character</h2>
         <div className="text-lg font-medium text-gray-800 mb-2">Level</div>
         <div className="space-y-3">
           {LEVELS.map((item, idx) => (
