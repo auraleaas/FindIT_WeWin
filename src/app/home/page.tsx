@@ -3,6 +3,7 @@ import HomeHeader from "~/components/home/HomeHeader"
 import LearningOptions from "~/components/home/LearningOptions"
 import LearningProgress from "~/components/home/LearningProgress"
 import Navbar from "~/components/layout/Navbar"
+import LatinCharacter from "~/../public/images/latin-character.svg"
 
 export const metadata: Metadata = {
   title: "Learning App - Home",
@@ -24,7 +25,12 @@ const LEARNING_OPTIONS = [
   { title: "Word", subtitle: "Braille", icon: "⠃⠗", color: "#FFD966" },
 ]
 
-const PROGRESS_ITEMS = [{ title: "Huruf Latin", level: 10, progress: 80, icon: "abc" }]
+const PROGRESS_ITEMS = [
+  { image: LatinCharacter, title: "Huruf Latin", level: 10, progress: 80, status: "unlocked" as const },
+  { image: LatinCharacter, title: "Huruf Braille", level: 3, progress: 20, status: "locked" as const },
+  { image: LatinCharacter, title: "Angka Latin", level: 5, progress: 50, status: "unlocked" as const },
+  { image: LatinCharacter, title: "Angka Braille", level: 1, progress: 0, status: "locked" as const },
+];
 
 export default function HomePage() {
   return (
