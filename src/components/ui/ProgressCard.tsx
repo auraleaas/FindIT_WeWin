@@ -2,6 +2,7 @@ import { Card, CardContent } from "~/components/ui/card"
 import { Progress } from "~/components/ui/progress"
 import { Lock } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export interface ProgressCardProps {
     image: string // URL or placeholder
@@ -9,10 +10,11 @@ export interface ProgressCardProps {
     level: number
     progress: number
     status: "locked" | "unlocked"
+    href?: string
 }
   
-export function ProgressCard({ image, title, level, progress, status }: ProgressCardProps) {
-    return (
+export function ProgressCard({ image, title, level, progress, status, href }: ProgressCardProps) {
+    const cardContent = (
         <Card className={`py-0 shadow-none ${status === "locked" ? "opacity-60" : "bg-[#E6F7F4] border-[#6DD0C3]"}`}>
         <CardContent className="p-4">
             <div className="flex items-center">
@@ -43,7 +45,8 @@ export function ProgressCard({ image, title, level, progress, status }: Progress
             </div>
         </CardContent>
         </Card>
-    )
+    );
+    return href ? <Link href={href} className="block">{cardContent}</Link> : cardContent;
 }
 
 export interface LearningProgressProps {

@@ -17,19 +17,19 @@ const USER_DATA = {
 }
 
 const LEARNING_OPTIONS = [
-  { title: "Character", subtitle: "Latin", icon: "abc", color: "#FFD966" },
-  { title: "Character", subtitle: "Braille", icon: "⠁", color: "#FFD966" },
-  { title: "Number", subtitle: "Latin", icon: "123", color: "#FFD966" },
-  { title: "Number", subtitle: "Braille", icon: "⠿", color: "#FFD966" },
-  { title: "Word", subtitle: "Latin", icon: "aku", color: "#FFD966" },
-  { title: "Word", subtitle: "Braille", icon: "⠃⠗", color: "#FFD966" },
+  { title: "Character", subtitle: "Latin", icon: "abc", color: "#FFD966", href: "/module/latin" },
+  { title: "Character", subtitle: "Braille", icon: "⠁", color: "#FFD966", href: "/module/braille" },
+  { title: "Number", subtitle: "Latin", icon: "123", color: "#FFD966", href: "/module/latin-numbers" },
+  { title: "Number", subtitle: "Braille", icon: "⠿", color: "#FFD966", href: "/module/braille-numbers" },
+  { title: "Word", subtitle: "Latin", icon: "aku", color: "#FFD966", href: "/module/latin-words" },
+  { title: "Word", subtitle: "Braille", icon: "⠃⠗", color: "#FFD966", href: "/module/braille-words" },
 ]
 
 const PROGRESS_ITEMS = [
-  { image: LatinCharacter, title: "Huruf Latin", level: 10, progress: 80, status: "unlocked" as const },
-  { image: LatinCharacter, title: "Huruf Braille", level: 3, progress: 20, status: "locked" as const },
-  { image: LatinCharacter, title: "Angka Latin", level: 5, progress: 50, status: "unlocked" as const },
-  { image: LatinCharacter, title: "Angka Braille", level: 1, progress: 0, status: "locked" as const },
+  { image: LatinCharacter, title: "Huruf Latin", level: 10, progress: 80, status: "unlocked" as const, href: "/module/latin" },
+  { image: LatinCharacter, title: "Huruf Braille", level: 3, progress: 20, status: "locked" as const, href: "/module/braille" },
+  { image: LatinCharacter, title: "Angka Latin", level: 5, progress: 50, status: "unlocked" as const, href: "/module/latin-numbers" },
+  { image: LatinCharacter, title: "Angka Braille", level: 1, progress: 0, status: "locked" as const, href: "/module/braille-numbers" },
 ];
 
 export default function HomePage() {
