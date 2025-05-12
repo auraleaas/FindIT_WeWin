@@ -10,8 +10,8 @@ export default function Navbar() {
           <span className="text-xs text-gray-500 mt-1">E-Book</span>
         </Link>
         <Link href="/home" className="flex flex-col items-center p-2">
-          <FaHome className="h-6 w-6 text-gray-900" />
-          <span className="text-xs text-gray-900 mt-1">Home</span>
+          <FaHome className="h-6 w-6 text-gray-500" />
+          <span className="text-xs text-gray-500 mt-1">Home</span>
         </Link>
         <Link href="/profile" className="flex flex-col items-center p-2">
           <FaUserCircle className="h-6 w-6 text-gray-500" />

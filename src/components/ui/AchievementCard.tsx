@@ -47,7 +47,7 @@ export default function AchievementCard({ image, title, desc, star, color }: Ach
   const dark = darken(color, 0.2);
   return (
     <div
-      className="rounded-2xl p-4 flex items-center gap-4"
+      className="rounded-2xl p-4 flex items-center gap-4 h-[96px]"
       style={{
         background: `linear-gradient(90deg, ${light} 0%, ${dark} 100%)`
       }}
