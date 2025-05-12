@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import HomeHeader from "~/components/home/HomeHeader"
 import LearningOptions from "~/components/home/LearningOptions"
 import LearningProgress from "~/components/home/LearningProgress"
-import Navbar from "~/components/layout/Navbar"
 import LatinCharacter from "~/../public/images/latin-character.svg"
 
 export const metadata: Metadata = {
@@ -48,8 +47,6 @@ export default function HomePage() {
           <LearningProgress progressItems={PROGRESS_ITEMS} />
         </section>
       </main>
-
-      <Navbar />
     </div>
   )
 }

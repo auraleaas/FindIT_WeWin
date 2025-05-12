@@ -5,6 +5,7 @@ import type { Metadata } from "next"
 import { Lexend } from "next/font/google"
 
 import { TRPCReactProvider } from "~/trpc/react"
+import Navbar from "~/components/layout/Navbar"
 
 export const metadata: Metadata = {
   title: "Learning App PWA",
@@ -28,7 +29,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
       </head>
       <body className={`${lexend.className} antialiased`}>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <>
+            {children}
+            <Navbar/>
+          </>
+        </TRPCReactProvider>
       </body>
     </html>
   )
