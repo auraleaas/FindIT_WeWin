@@ -1,14 +1,18 @@
 import { Card, CardContent } from "~/components/ui/card"
 import { Progress } from "~/components/ui/progress"
 
-interface ProgressItemProps {
+interface ProgressItem {
   title: string
   level: number
   progress: number
   icon: string
 }
 
-function ProgressItem({ title, level, progress, icon }: ProgressItemProps) {
+interface LearningProgressProps {
+  progressItems: ProgressItem[]
+}
+
+function ProgressItem({ title, level, progress, icon }: ProgressItem) {
   return (
     <Card className="bg-[#E6F7F4] border-[#6DD0C3] py-0">
       <CardContent className="p-4">
@@ -32,10 +36,12 @@ function ProgressItem({ title, level, progress, icon }: ProgressItemProps) {
   )
 }
 
-export default function LearningProgress() {
+export default function LearningProgress({ progressItems }: LearningProgressProps) {
   return (
     <div className="space-y-3">
-      <ProgressItem title="Huruf Latin" level={10} progress={80} icon="abc" />
+      {progressItems.map((item, index) => (
+        <ProgressItem key={index} title={item.title} level={item.level} progress={item.progress} icon={item.icon} />
+      ))}
     </div>
   )
 }

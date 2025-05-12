@@ -9,20 +9,37 @@ export const metadata: Metadata = {
   description: "Learn Latin and Braille characters and numbers",
 }
 
+// Constants for the home page
+const USER_DATA = {
+  name: "John",
+  message: "What do you want to learn today?",
+}
+
+const LEARNING_OPTIONS = [
+  { title: "Character", subtitle: "Latin", icon: "abc", color: "#FFD966" },
+  { title: "Character", subtitle: "Braille", icon: "⠁", color: "#FFD966" },
+  { title: "Number", subtitle: "Latin", icon: "123", color: "#FFD966" },
+  { title: "Number", subtitle: "Braille", icon: "⠿", color: "#FFD966" },
+  { title: "Word", subtitle: "Latin", icon: "aku", color: "#FFD966" },
+  { title: "Word", subtitle: "Braille", icon: "⠃⠗", color: "#FFD966" },
+]
+
+const PROGRESS_ITEMS = [{ title: "Huruf Latin", level: 10, progress: 80, icon: "abc" }]
+
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#4CD6C1]">
-      <HomeHeader name="John" message="What do you want to learn today?" />
+      <HomeHeader name={USER_DATA.name} message={USER_DATA.message} />
 
       <main className="flex-1 px-4 pb-20 rounded-t-3xl bg-white">
         <section className="mt-4">
           <h2 className="text-xl font-medium text-gray-800 mb-3">Learning Modules</h2>
-          <LearningOptions />
+          <LearningOptions options={LEARNING_OPTIONS} />
         </section>
 
         <section className="my-8">
           <h2 className="text-xl font-medium text-gray-800 mb-3">Learning Progress</h2>
-          <LearningProgress />
+          <LearningProgress progressItems={PROGRESS_ITEMS} />
         </section>
       </main>
 

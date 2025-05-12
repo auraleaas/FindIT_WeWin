@@ -1,14 +1,18 @@
 import { Card, CardContent } from "~/components/ui/card"
 import { ArrowRight } from "lucide-react"
 
-interface LearningOptionProps {
+interface LearningOptionItem {
   title: string
   subtitle: string
   icon: string
   color: string
 }
 
-function LearningOption({ title, subtitle, icon, color }: LearningOptionProps) {
+interface LearningOptionsProps {
+  options: LearningOptionItem[]
+}
+
+function LearningOption({ title, subtitle, icon, color }: LearningOptionItem) {
   return (
     <Card className="bg-[#FFD966] border-none py-2">
       <CardContent className="px-2 py-0">
@@ -28,16 +32,7 @@ function LearningOption({ title, subtitle, icon, color }: LearningOptionProps) {
   )
 }
 
-export default function LearningOptions() {
-  const options = [
-    { title: "Character", subtitle: "Latin", icon: "abc", color: "#FFD966" },
-    { title: "Character", subtitle: "Braille", icon: "⠁", color: "#FFD966" },
-    { title: "Number", subtitle: "Latin", icon: "123", color: "#FFD966" },
-    { title: "Number", subtitle: "Braille", icon: "⠿", color: "#FFD966" },
-    { title: "Word", subtitle: "Latin", icon: "aku", color: "#FFD966" },
-    { title: "Word", subtitle: "Braille", icon: "⠃⠗", color: "#FFD966" },
-  ]
-
+export default function LearningOptions({ options }: LearningOptionsProps) {
   return (
     <div className="grid grid-cols-2 gap-2">
       {options.map((option, index) => (
