@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const lexend = Lexend({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-lexend",
 })
 
@@ -26,8 +27,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
       </head>
-      <body>
-          <TRPCReactProvider>{children}</TRPCReactProvider>
+      <body className={`${lexend.className} antialiased`}>
+        <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
   )
