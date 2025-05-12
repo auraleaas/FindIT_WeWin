@@ -92,7 +92,7 @@ export default function ProfilePage() {
             ))}
           </div>
         </div>
-        <div className="mt-8">
+        <div className="my-8">
           <div className="font-semibold text-gray-800 mb-2">Achievements</div>
           <div className="space-y-3">
             {AWARDS.map((item, idx) => (
