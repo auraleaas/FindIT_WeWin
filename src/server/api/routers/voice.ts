@@ -7,28 +7,45 @@ export const voiceRouter = createTRPCRouter({
   processVoice: publicProcedure
     .input(
       z.object({
-        audioBase64: z.string(), // Base64 encoded audio file
+        audioBase64: z.string().optional(), // Base64 encoded audio file (optional now)
+        textInput: z.string().optional(),   // Direct text input as alternative
       })
     )
     .mutation(async ({ input }) => {
       try {
-        // 1. Speech-to-Text (sync)
-        const [stt] = await speechClient.recognize({
-          config: { 
-            encoding: 'WEBM_OPUS', // For WebM audio from browser
-            sampleRateHertz: 48000, // Common for browser recordings
-            languageCode: 'en-US'
-          },
-          audio: { content: input.audioBase64 },
-        });
+        let transcript = '';
         
-        const transcript = stt.results?.[0]?.alternatives?.[0]?.transcript || '';
+        // Process either audio or direct text input
+        if (input.audioBase64) {
+          // 1. Speech-to-Text (sync)
+          const [stt] = await speechClient.recognize({
+            config: { 
+              // More flexible configuration for different audio formats
+              encoding: 'ENCODING_UNSPECIFIED', // Let the API detect the encoding
+              sampleRateHertz: 48000, // Common for browser recordings
+              languageCode: 'en-US',
+              model: 'default', // Use the default model
+              useEnhanced: true, // Better quality transcription
+            },
+            audio: { content: input.audioBase64 },
+          });
+          
+          transcript = stt.results?.[0]?.alternatives?.[0]?.transcript || '';
+        } else if (input.textInput) {
+          // Use the direct text input instead
+          transcript = input.textInput;
+        } else {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "No input provided"
+          });
+        }
         
         // If no transcript, return early
         if (!transcript) {
           throw new TRPCError({
             code: "BAD_REQUEST",
-            message: "Could not transcribe audio"
+            message: "Could not transcribe audio or no text was provided"
           });
         }
 
@@ -40,7 +57,7 @@ export const voiceRouter = createTRPCRouter({
         // 3. Text-to-Speech
         const [audio] = await ttsClient.synthesizeSpeech({
           input: { text: answer },
-          voice: { languageCode: 'en-US', name: 'en-US-Standard-D' }, // Using Standard voice instead of Studio
+          voice: { languageCode: 'en-US', name: 'en-US-Standard-D' },
           audioConfig: { audioEncoding: 'MP3' },
         });
 
@@ -53,7 +70,7 @@ export const voiceRouter = createTRPCRouter({
         console.error("Voice processing error:", error);
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to process voice input",
+          message: "Failed to process input",
         });
       }
     }),
