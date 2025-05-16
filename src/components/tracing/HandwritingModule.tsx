@@ -355,7 +355,7 @@ const HandwritingModule: React.FC<HandwritingModuleProps> = ({
         
         // Calculate final score (weighted average)
         const finalScore = (
-          scores.template * 0.4 + 
+          scores?.template ?? 0 * 0.4 + 
           score * 0.6
         );
         
@@ -528,7 +528,7 @@ const HandwritingModule: React.FC<HandwritingModuleProps> = ({
               </svg>
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-2">Stage Complete!</h3>
-            <p className="text-gray-600 mb-3">Your score: {Math.round(scores[currentStage])}%</p>
+            <p className="text-gray-600 mb-3">Your score: {Math.round(scores[currentStage] ?? 0)}%</p>
             <p className="text-gray-600 mb-4">
               {currentStage === 'template' ? 'Moving to guided practice...' : 'All stages complete!'}
             </p>
@@ -554,8 +554,8 @@ const HandwritingModule: React.FC<HandwritingModuleProps> = ({
       
       {/* Progress indicators */}
       <div className="flex justify-center gap-4 mt-8 w-full max-w-xs">
-        <div className={`flex-1 h-3 rounded-full ${currentStage === 'template' ? styles.color : scores.template > 0 ? 'bg-green-500' : 'bg-gray-300'}`} aria-hidden="true"></div>
-        <div className={`flex-1 h-3 rounded-full ${currentStage === 'guided' ? styles.color : scores.guided > 0 ? 'bg-green-500' : 'bg-gray-300'}`} aria-hidden="true"></div>
+        <div className={`flex-1 h-3 rounded-full ${currentStage === 'template' ? styles.color : scores.template ?? 0 > 0 ? 'bg-green-500' : 'bg-gray-300'}`} aria-hidden="true"></div>
+        <div className={`flex-1 h-3 rounded-full ${currentStage === 'guided' ? styles.color : scores.guided ?? 0 > 0 ? 'bg-green-500' : 'bg-gray-300'}`} aria-hidden="true"></div>
       </div>
       
       {/* Accessible progress status for screen readers */}
