@@ -3,6 +3,7 @@ import HomeHeader from "~/components/home/HomeHeader"
 import LearningOptions from "~/components/home/LearningOptions"
 import LearningProgress from "~/components/home/LearningProgress"
 import LatinCharacter from "~/../public/images/latin-character.svg"
+import ChatFloatingButton from '~/components/ui/ChatFloatingButton'
 
 export const metadata: Metadata = {
   title: "Learning App - Home",
@@ -47,6 +48,7 @@ export default function HomePage() {
           <LearningProgress progressItems={PROGRESS_ITEMS} />
         </section>
       </main>
+      <ChatFloatingButton />
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { Input } from "~/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select";
 import BackButton from "~/components/ui/BackButton";
 import { FaSearch } from "react-icons/fa";
+import ChatFloatingButton from "~/components/ui/ChatFloatingButton";
 
 const BOOKS = [
   {
@@ -83,6 +84,7 @@ export default function EbookPage() {
           ))}
         </div>
       </div>
+      <ChatFloatingButton />
     </div>
   );
 }
